@@ -42,6 +42,13 @@ namespace PolygonEditor
 
         private void changeMode(Mode mode)
         {
+            changeScreenCatcher(mode);
+            
+            currentMode = mode;
+        }
+
+        private void changeScreenCatcher(Mode mode)
+        {
             if (mode == Mode.AddPolygon)
             {
                 screenCatcher = new AddPolygonScreenCatcher(state, drawer);
@@ -50,8 +57,6 @@ namespace PolygonEditor
             {
                 screenCatcher = new AddRemoveVertexScreenCatcher(state, drawer);
             }
-
-            currentMode = mode;
         }
     }
 }

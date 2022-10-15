@@ -12,8 +12,8 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class AddRemoveVertexScreenCatcher : BaseScreenCatcher
     {
-        BoardState state;
-        BoardDrawer drawer;
+        private BoardState state;
+        private BoardDrawer drawer;
 
         public AddRemoveVertexScreenCatcher(BoardState state, BoardDrawer drawer)
         {
