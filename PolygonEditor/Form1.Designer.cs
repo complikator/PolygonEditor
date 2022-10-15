@@ -35,6 +35,7 @@
             this.addPolygonRadio = new System.Windows.Forms.RadioButton();
             this.AddRemoveVertexRadio = new System.Windows.Forms.RadioButton();
             this.MoveElementsRadio = new System.Windows.Forms.RadioButton();
+            this.MovePolygonRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,6 +89,7 @@
             this.radioButtonsPanel.Controls.Add(this.addPolygonRadio, 0, 0);
             this.radioButtonsPanel.Controls.Add(this.AddRemoveVertexRadio, 0, 1);
             this.radioButtonsPanel.Controls.Add(this.MoveElementsRadio, 0, 2);
+            this.radioButtonsPanel.Controls.Add(this.MovePolygonRadio, 0, 3);
             this.radioButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButtonsPanel.Location = new System.Drawing.Point(3, 16);
             this.radioButtonsPanel.Name = "radioButtonsPanel";
@@ -135,6 +137,18 @@
             this.MoveElementsRadio.UseVisualStyleBackColor = true;
             this.MoveElementsRadio.CheckedChanged += new System.EventHandler(this.MoveElementsRadio_CheckedChanged);
             // 
+            // MovePolygonRadio
+            // 
+            this.MovePolygonRadio.AutoSize = true;
+            this.MovePolygonRadio.Location = new System.Drawing.Point(3, 153);
+            this.MovePolygonRadio.Name = "MovePolygonRadio";
+            this.MovePolygonRadio.Size = new System.Drawing.Size(93, 17);
+            this.MovePolygonRadio.TabIndex = 3;
+            this.MovePolygonRadio.TabStop = true;
+            this.MovePolygonRadio.Text = "Move Polygon";
+            this.MovePolygonRadio.UseVisualStyleBackColor = true;
+            this.MovePolygonRadio.CheckedChanged += new System.EventHandler(this.MovePolygonRadio_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +175,7 @@
         private System.Windows.Forms.RadioButton addPolygonRadio;
         private System.Windows.Forms.RadioButton AddRemoveVertexRadio;
         private System.Windows.Forms.RadioButton MoveElementsRadio;
+        private System.Windows.Forms.RadioButton MovePolygonRadio;
     }
 }
 

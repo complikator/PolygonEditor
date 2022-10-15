@@ -66,6 +66,7 @@
     <Compile Include="ScreenCatchers\AddPolygonScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\AddRemoveVertexScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\BaseScreenCatcher.cs" />
+    <Compile Include="ScreenCatchers\MovePolygonScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\MoveScreenCatcher.cs" />
     <Compile Include="State\BoardState.cs" />
     <Compile Include="Validators\AddVertexValidator.cs" />
@@ -95,6 +96,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

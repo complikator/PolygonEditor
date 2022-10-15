@@ -54,5 +54,24 @@ namespace PolygonEditor.Helpers
 
             return (min.e, min.p);
         }
+
+        public static Polygon FindNearestPolygon(BoardState state, int x, int y)
+        {
+            (Polygon p, double distance) min = (null, double.MaxValue);
+
+            foreach (Polygon p in state.polygons)
+            {
+                double middleX = p.Vertices.Select(v => v.x).Sum() / p.Vertices.Count;
+                double middleY = p.Vertices.Select(v => v.y).Sum() / p.Vertices.Count;
+
+                var currentDistance = Math.Pow(x - middleX, 2) + Math.Pow(y - middleY, 2);
+                if (currentDistance < min.distance)
+                {
+                    min = (p, currentDistance);
+                }
+            }
+
+            return min.p;
+        }
     }
 }

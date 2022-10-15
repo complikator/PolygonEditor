@@ -99,5 +99,13 @@ namespace PolygonEditor
                 manager.ChangeMode(Mode.MoveElements);
             }
         }
+
+        private void MovePolygonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MovePolygonRadio.Checked)
+            {
+                manager.ChangeMode(Mode.MovePolygon);
+            }
+        }
     }
 }
