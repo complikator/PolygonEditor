@@ -14,7 +14,6 @@ namespace PolygonEditor
     {
         AddPolygon,
         AddRemoveVertex,
-        Move,
     }
 
     internal class Manager

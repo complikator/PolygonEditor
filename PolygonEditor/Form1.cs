@@ -25,15 +25,15 @@ namespace PolygonEditor
         {
             try
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    manager.screenCatcher.LeftMouseDown(e.X, e.Y);
-                }
-                if (e.Button == MouseButtons.Right)
-                {
-                    manager.screenCatcher.RightMouseDown(e.X, e.Y);
-                }
+            if (e.Button == MouseButtons.Left)
+            {
+                manager.screenCatcher.LeftMouseDown(e.X, e.Y);
             }
+            if (e.Button == MouseButtons.Right)
+            {
+                manager.screenCatcher.RightMouseDown(e.X, e.Y);
+            }
+        }
             catch(Exception ex)
             {
                 messageError(ex.Message);
@@ -44,14 +44,14 @@ namespace PolygonEditor
         {
             try
             {
-                if (e.Button == MouseButtons.Left)
-                {
-                    manager.screenCatcher.LeftMouseUp(e.X, e.Y);
-                }
-                if (e.Button == MouseButtons.Right)
-                {
-                    manager.screenCatcher.RightMouseUp(e.X, e.Y);
-                }
+            if (e.Button == MouseButtons.Left)
+            {
+                manager.screenCatcher.LeftMouseUp(e.X, e.Y);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                manager.screenCatcher.RightMouseUp(e.X, e.Y);
+            }
             }
             catch(Exception ex)
             {
