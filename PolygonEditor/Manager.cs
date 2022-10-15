@@ -14,6 +14,7 @@ namespace PolygonEditor
     {
         AddPolygon,
         AddRemoveVertex,
+        MoveElements,
     }
 
     internal class Manager
@@ -56,6 +57,10 @@ namespace PolygonEditor
             else if (mode == Mode.AddRemoveVertex)
             {
                 screenCatcher = new AddRemoveVertexScreenCatcher(state, drawer);
+            }
+            else if (mode == Mode.MoveElements)
+            {
+                screenCatcher = new MoveScreenCatcher(state, drawer);
             }
         }
     }

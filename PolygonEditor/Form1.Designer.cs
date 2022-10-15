@@ -34,6 +34,7 @@
             this.radioButtonsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.addPolygonRadio = new System.Windows.Forms.RadioButton();
             this.AddRemoveVertexRadio = new System.Windows.Forms.RadioButton();
+            this.MoveElementsRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -86,6 +87,7 @@
             this.radioButtonsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.radioButtonsPanel.Controls.Add(this.addPolygonRadio, 0, 0);
             this.radioButtonsPanel.Controls.Add(this.AddRemoveVertexRadio, 0, 1);
+            this.radioButtonsPanel.Controls.Add(this.MoveElementsRadio, 0, 2);
             this.radioButtonsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButtonsPanel.Location = new System.Drawing.Point(3, 16);
             this.radioButtonsPanel.Name = "radioButtonsPanel";
@@ -121,6 +123,18 @@
             this.AddRemoveVertexRadio.UseVisualStyleBackColor = true;
             this.AddRemoveVertexRadio.CheckedChanged += new System.EventHandler(this.AddRemoveVertexRadio_CheckedChanged);
             // 
+            // MoveElementsRadio
+            // 
+            this.MoveElementsRadio.AutoSize = true;
+            this.MoveElementsRadio.Location = new System.Drawing.Point(3, 103);
+            this.MoveElementsRadio.Name = "MoveElementsRadio";
+            this.MoveElementsRadio.Size = new System.Drawing.Size(98, 17);
+            this.MoveElementsRadio.TabIndex = 2;
+            this.MoveElementsRadio.TabStop = true;
+            this.MoveElementsRadio.Text = "Move Elements";
+            this.MoveElementsRadio.UseVisualStyleBackColor = true;
+            this.MoveElementsRadio.CheckedChanged += new System.EventHandler(this.MoveElementsRadio_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +160,7 @@
         private System.Windows.Forms.TableLayoutPanel radioButtonsPanel;
         private System.Windows.Forms.RadioButton addPolygonRadio;
         private System.Windows.Forms.RadioButton AddRemoveVertexRadio;
+        private System.Windows.Forms.RadioButton MoveElementsRadio;
     }
 }
 

@@ -25,16 +25,16 @@ namespace PolygonEditor
         {
             try
             {
-            if (e.Button == MouseButtons.Left)
-            {
-                manager.screenCatcher.LeftMouseDown(e.X, e.Y);
+                if (e.Button == MouseButtons.Left)
+                {
+                    manager.screenCatcher.LeftMouseDown(e.X, e.Y);
+                }
+                if (e.Button == MouseButtons.Right)
+                {
+                    manager.screenCatcher.RightMouseDown(e.X, e.Y);
+                }
             }
-            if (e.Button == MouseButtons.Right)
-            {
-                manager.screenCatcher.RightMouseDown(e.X, e.Y);
-            }
-        }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 messageError(ex.Message);
             }
@@ -44,16 +44,16 @@ namespace PolygonEditor
         {
             try
             {
-            if (e.Button == MouseButtons.Left)
-            {
-                manager.screenCatcher.LeftMouseUp(e.X, e.Y);
+                if (e.Button == MouseButtons.Left)
+                {
+                    manager.screenCatcher.LeftMouseUp(e.X, e.Y);
+                }
+                if (e.Button == MouseButtons.Right)
+                {
+                    manager.screenCatcher.RightMouseUp(e.X, e.Y);
+                }
             }
-            if (e.Button == MouseButtons.Right)
-            {
-                manager.screenCatcher.RightMouseUp(e.X, e.Y);
-            }
-            }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 messageError(ex.Message);
             }
@@ -66,7 +66,14 @@ namespace PolygonEditor
 
         private void canvas_MouseMove(object sender, MouseEventArgs e)
         {
-
+            try
+            {
+                manager.screenCatcher.MouseMove(e.X, e.Y);
+            }
+            catch(Exception ex)
+            {
+                messageError(ex.Message);
+            }
         }
 
         private void AddRemoveVertexRadio_CheckedChanged(Object sender, EventArgs e)
@@ -82,6 +89,14 @@ namespace PolygonEditor
             if (addPolygonRadio.Checked)
             {
                 manager.ChangeMode(Mode.AddPolygon);
+            }
+        }
+
+        private void MoveElementsRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MoveElementsRadio.Checked)
+            {
+                manager.ChangeMode(Mode.MoveElements);
             }
         }
     }

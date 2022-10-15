@@ -120,5 +120,11 @@ namespace PolygonEditor.Model
             int index = Vertices.IndexOf(which.beginning);
             Vertices.Insert(index + 1, v);
         }
+
+        public void MoveVertex(Vertex v, int x, int y)
+        {
+            v.x = x;
+            v.y = y;
+        }
     }
 }

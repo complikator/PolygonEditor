@@ -46,7 +46,7 @@ namespace PolygonEditor.ScreenCatchers
 
         public void MouseMove(int x, int y)
         {
-            throw new NotImplementedException();
+
         }
 
         public void RightMouseDown(int x, int y)
