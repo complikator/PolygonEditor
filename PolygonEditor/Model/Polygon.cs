@@ -86,26 +86,26 @@ namespace PolygonEditor.Model
 
             if (index == 0)
             {
-                Edges.Remove(Edges.Find(e => e.beginning == Vertices[0]));
-                Edges.Remove(Edges.Find(e => e.end == Vertices[0]));
+                Edges.Remove(Edges.Find(e => e.beginning == which));
+                Edges.Remove(Edges.Find(e => e.end == which));
                 
                 Edges.Add(new Edge(Vertices[Vertices.Count - 1], Vertices[0]));
             }
             else if (index == Vertices.Count - 1)
             {
-                Edges.Remove(Edges.Find(e => e.beginning == Vertices[index]));
-                Edges.Remove(Edges.Find(e => e.end == Vertices[index]));
+                Edges.Remove(Edges.Find(e => e.beginning == which));
+                Edges.Remove(Edges.Find(e => e.end == which));
                 Edges.Add(new Edge(Vertices[Vertices.Count - 1], Vertices[0]));
 
                 Vertices.RemoveAt(index);
             }
             else
             {
-                Edges.Remove(Edges.Find(e => e.beginning == Vertices[index]));
-                Edges.Remove(Edges.Find(e => e.end == Vertices[index]));
+                Edges.Remove(Edges.Find(e => e.beginning == which));
+                Edges.Remove(Edges.Find(e => e.end == which));
                 Edges.Add(new Edge(Vertices[index - 1], Vertices[index + 1]));
 
-                Vertices.RemoveAt(index);
+                Vertices.Remove(which);
             }
         }
 
