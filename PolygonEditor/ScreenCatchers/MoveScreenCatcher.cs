@@ -13,8 +13,6 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class MoveScreenCatcher : BaseScreenCatcher
     {
-        private BoardState state;
-        private BoardDrawer drawer;
         private MoveElementValidator moveElementValidator;
 
         private bool isVertexMoving = false;
@@ -28,10 +26,8 @@ namespace PolygonEditor.ScreenCatchers
 
         private (int x, int y) startMousePosition;
 
-        public MoveScreenCatcher(BoardState state, BoardDrawer drawer)
+        public MoveScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
         {
-            this.state = state;
-            this.drawer = drawer;
             this.moveElementValidator = new MoveElementValidator(state);
         }
         /// <summary>
@@ -39,7 +35,7 @@ namespace PolygonEditor.ScreenCatchers
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void LeftMouseDown(int x, int y)
+        public override void LeftMouseDown(int x, int y)
         {
             var found = ScreenToElementFinder.FindNearestVertex(state, x, y);
 
@@ -59,13 +55,13 @@ namespace PolygonEditor.ScreenCatchers
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void LeftMouseUp(int x, int y)
+        public override void LeftMouseUp(int x, int y)
         {
             currentVertex = (null, null);
             isVertexMoving = false;
         }
 
-        public void MouseMove(int x, int y)
+        public override void MouseMove(int x, int y)
         {
             if (isVertexMoving)
             {
@@ -99,7 +95,7 @@ namespace PolygonEditor.ScreenCatchers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void RightMouseDown(int x, int y)
+        public override void RightMouseDown(int x, int y)
         {
             var found = ScreenToElementFinder.FindNearestEdge(state, x, y);
 
@@ -120,7 +116,7 @@ namespace PolygonEditor.ScreenCatchers
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void RightMouseUp(int x, int y)
+        public override void RightMouseUp(int x, int y)
         {
             currentEdge = (null, null);
             isEdgeMoving = false;

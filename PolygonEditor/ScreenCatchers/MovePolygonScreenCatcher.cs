@@ -12,22 +12,17 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class MovePolygonScreenCatcher : BaseScreenCatcher
     {
-        private BoardState state;
-        private BoardDrawer drawer;
-
         private bool isPolygonMoving = false;
         private Polygon currentPolygon;
 
         List<(int x, int y)> startVerticesPositions = new List<(int x, int y)>();
         private (int x, int y) startMousePosition;
 
-        public MovePolygonScreenCatcher(BoardState state, BoardDrawer drawer)
+        public MovePolygonScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
         {
-            this.state = state;
-            this.drawer = drawer;
         }
 
-        public void LeftMouseDown(int x, int y)
+        public override void LeftMouseDown(int x, int y)
         {
             var found = ScreenToElementFinder.FindNearestPolygon(state, x, y);
 
@@ -46,7 +41,7 @@ namespace PolygonEditor.ScreenCatchers
             }
         }
 
-        public void LeftMouseUp(int x, int y)
+        public override void LeftMouseUp(int x, int y)
         {
             currentPolygon = null;
             isPolygonMoving = false;
@@ -54,7 +49,7 @@ namespace PolygonEditor.ScreenCatchers
             startVerticesPositions = new List<(int x, int y)>();
         }
 
-        public void MouseMove(int x, int y)
+        public override void MouseMove(int x, int y)
         {
             if (isPolygonMoving)
             {
@@ -72,12 +67,12 @@ namespace PolygonEditor.ScreenCatchers
             drawer.Refresh();
         }
 
-        public void RightMouseDown(int x, int y)
+        public override void RightMouseDown(int x, int y)
         {
             throw new NotImplementedException();
         }
 
-        public void RightMouseUp(int x, int y)
+        public override void RightMouseUp(int x, int y)
         {
             throw new NotImplementedException();
         }

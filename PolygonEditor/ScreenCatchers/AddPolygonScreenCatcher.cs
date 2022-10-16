@@ -12,24 +12,20 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class AddPolygonScreenCatcher : BaseScreenCatcher
     {
-        private BoardState state;
         private AddVertexValidator addVertexValidator;
         private bool buildingInProgress = false;
         private PolygonBuilder builder;
-        private BoardDrawer drawer;
 
-        public AddPolygonScreenCatcher(BoardState state, BoardDrawer drawer)
+        public AddPolygonScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
         {
-            this.state = state;
             this.addVertexValidator = new AddVertexValidator(state);
-            this.drawer = drawer;
         }
-        public void LeftMouseDown(int x, int y)
+        public override void LeftMouseDown(int x, int y)
         {
             
         }
 
-        public void LeftMouseUp(int x, int y)
+        public override void LeftMouseUp(int x, int y)
         {
             if (addVertexValidator.isPossibleToAddVertex(x,y))
             {
@@ -45,17 +41,17 @@ namespace PolygonEditor.ScreenCatchers
             }
         }
 
-        public void MouseMove(int x, int y)
+        public override void MouseMove(int x, int y)
         {
 
         }
 
-        public void RightMouseDown(int x, int y)
+        public override void RightMouseDown(int x, int y)
         {
 
         }
 
-        public void RightMouseUp(int x, int y)
+        public override void RightMouseUp(int x, int y)
         {
             if (buildingInProgress && builder.canBuild())
             {
