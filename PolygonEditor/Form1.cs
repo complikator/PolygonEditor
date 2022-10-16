@@ -107,5 +107,10 @@ namespace PolygonEditor
                 manager.ChangeMode(Mode.MovePolygon);
             }
         }
+
+        private void canvas_SizeChanged(object sender, EventArgs e)
+        {
+            manager.ReinstallBoard();
+        }
     }
 }

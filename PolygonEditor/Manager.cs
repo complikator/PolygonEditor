@@ -20,7 +20,9 @@ namespace PolygonEditor
 
     internal class Manager
     {
-        private Mode? currentMode = Mode.AddPolygon;
+        private Mode currentMode;
+        private DrawingType currentDrawingType;
+        private PictureBox canvas;
 
         public BoardDrawer drawer;
         public BaseScreenCatcher screenCatcher;
@@ -28,6 +30,7 @@ namespace PolygonEditor
 
         public Manager(PictureBox canvas)
         {
+            this.canvas = canvas;
             drawer = new BoardDrawer(canvas, state, DrawingType.Library);
             screenCatcher = new AddPolygonScreenCatcher(state, drawer);
         }
@@ -40,6 +43,19 @@ namespace PolygonEditor
             }
 
             changeMode(mode);
+        }
+
+        public void ReinstallBoard()
+        {
+            drawer = new BoardDrawer(canvas, state, currentDrawingType);
+
+            screenCatcher.drawer = drawer;
+            drawer.Refresh();
+        }
+
+        public void ChangeDrawingType(DrawingType type)
+        {
+            drawer.ChangeDrawingType(type);
         }
 
         private void changeMode(Mode mode)
