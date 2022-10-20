@@ -98,8 +98,15 @@ namespace PolygonEditor.ScreenCatchers
                 //    currentEdge.polygon.MoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
                 //}
 
-                constraintController.TryMoveVertex(currentEdge.e.beginning, newBeginning.x, newBeginning.y);
-                constraintController.TryMoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
+                //constraintController.TryMoveVertex(currentEdge.e.beginning, newBeginning.x, newBeginning.y);
+                //constraintController.TryMoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
+
+                int relativeX = x - startMousePosition.x;
+                int relativeY = y - startMousePosition.y;
+
+                startMousePosition = (x, y);
+
+                constraintController.TryMoveEdge(currentEdge.e, relativeX, relativeY);
             }
 
             drawer.Refresh();
