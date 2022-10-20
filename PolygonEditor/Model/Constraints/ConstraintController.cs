@@ -65,7 +65,7 @@ namespace PolygonEditor.Model.Constraints
         
         public bool TryMoveVertex(Vertex vertex, int x, int y)
         {
-            state.MakeSnapshot():
+            state.MakeSnapshot();
 
             Console.WriteLine($"Trying to move vertex from: ({vertex.x}, {vertex.y}) to ({x}, {y})");
 
