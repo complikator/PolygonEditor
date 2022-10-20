@@ -38,7 +38,24 @@ namespace PolygonEditor.State
 
     public class BoardState
     {
+        private BoardSnapshot currentSnapshot;
+
         public List<Polygon> polygons = new List<Polygon>();
+
+        public void MakeSnapshot()
+        {
+            currentSnapshot = new BoardSnapshot(this);
+        }
+
+        public void RecreateFromLastSnapshot()
+        {
+            if (currentSnapshot == null)
+            {
+                throw new InvalidOperationException("Last snapshot is null");
+            }
+
+            RecreateFromSnapshot(currentSnapshot);
+        }
 
         public BoardSnapshot GetSnapshot()
         {

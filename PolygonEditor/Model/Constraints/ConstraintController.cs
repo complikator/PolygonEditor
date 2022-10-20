@@ -23,7 +23,7 @@ namespace PolygonEditor.Model.Constraints
 
         public bool TryAddPerpendicularConstaint(Edge first, Edge second, BoardDrawer drawer)
         {
-            BoardSnapshot boardSnapshot = state.GetSnapshot();
+            state.MakeSnapshot();
 
             PerpendicularConstraint constraint = new PerpendicularConstraint(first, second);
 
@@ -38,14 +38,14 @@ namespace PolygonEditor.Model.Constraints
             }
             else
             {
-                state.RecreateFromSnapshot(boardSnapshot);
+                state.RecreateFromLastSnapshot();
                 return false;
             }
         }
 
         public bool TryAddFixedLengthConstraint(Edge edge, BoardDrawer drawer)
         {
-            BoardSnapshot boardSnapshot = state.GetSnapshot();
+            state.MakeSnapshot();
 
             FixedLengthConstraint fixedLength = new FixedLengthConstraint(edge);
             edge.Constraint = fixedLength;
@@ -58,14 +58,14 @@ namespace PolygonEditor.Model.Constraints
             }
             else
             {
-                state.RecreateFromSnapshot(boardSnapshot);
+                state.RecreateFromLastSnapshot();
                 return false;
             }
         }
         
         public bool TryMoveVertex(Vertex vertex, int x, int y)
         {
-            BoardSnapshot boardSnapshot = state.GetSnapshot();
+            state.MakeSnapshot():
 
             Console.WriteLine($"Trying to move vertex from: ({vertex.x}, {vertex.y}) to ({x}, {y})");
 
@@ -82,7 +82,7 @@ namespace PolygonEditor.Model.Constraints
             else
             {
                 Console.WriteLine("Moving vertex: FAILURE");
-                state.RecreateFromSnapshot(boardSnapshot);
+                state.RecreateFromLastSnapshot();
                 return false;
             }
         }
