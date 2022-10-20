@@ -1,6 +1,7 @@
 ﻿using PolygonEditor.Drawing;
 using PolygonEditor.Helpers;
 using PolygonEditor.Model;
+using PolygonEditor.Model.Constraints;
 using PolygonEditor.State;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,13 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class AddRemoveVertexScreenCatcher : BaseScreenCatcher
     {
-        public AddRemoveVertexScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
+        public AddRemoveVertexScreenCatcher(BoardState state, BoardDrawer drawer, ConstraintController constraintController) : base(state, drawer, constraintController)
         {
+        }
+
+        public override void Destroy()
+        {
+            
         }
 
         public override void LeftMouseDown(int x, int y)

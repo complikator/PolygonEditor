@@ -56,18 +56,25 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\Geometry.cs" />
     <Compile Include="Helpers\ScreenToElementFinder.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="Model\Constraints\Constraint.cs" />
+    <Compile Include="Model\Constraints\ConstraintController.cs" />
+    <Compile Include="Model\Constraints\FixedLengthConstraint.cs" />
+    <Compile Include="Model\Constraints\PerpendicularConstraint.cs" />
     <Compile Include="Model\Edge.cs" />
     <Compile Include="Model\Polygon.cs" />
     <Compile Include="Model\Vertex.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenCatchers\AddPerpendicularEdgesScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\AddPolygonScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\AddRemoveVertexScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\BaseScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\MovePolygonScreenCatcher.cs" />
-    <Compile Include="ScreenCatchers\MoveScreenCatcher.cs" />
+    <Compile Include="ScreenCatchers\MoveElementsScreenCatcher.cs" />
     <Compile Include="State\BoardState.cs" />
     <Compile Include="Validators\AddVertexValidator.cs" />
     <Compile Include="Validators\MoveElementValidator.cs" />
@@ -96,5 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

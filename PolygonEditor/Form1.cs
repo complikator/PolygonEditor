@@ -7,12 +7,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace PolygonEditor
 {
     public partial class Form1 : Form
     {
+        //#region to remove
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
+        //    AllocConsole();
+        //}
+
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //[return: MarshalAs(UnmanagedType.Bool)]
+        //static extern bool AllocConsole();
+
+        //#endregion
         Manager manager;
         public Form1()
         {
@@ -78,7 +90,7 @@ namespace PolygonEditor
 
         private void AddRemoveVertexRadio_CheckedChanged(Object sender, EventArgs e)
         {
-            if (AddRemoveVertexRadio.Checked)
+            if (addRemoveVertexRadio.Checked)
             {
                 manager.ChangeMode(Mode.AddRemoveVertex);
             }
@@ -94,7 +106,7 @@ namespace PolygonEditor
 
         private void MoveElementsRadio_CheckedChanged(object sender, EventArgs e)
         {
-            if (MoveElementsRadio.Checked)
+            if (moveElementsRadio.Checked)
             {
                 manager.ChangeMode(Mode.MoveElements);
             }
@@ -102,9 +114,17 @@ namespace PolygonEditor
 
         private void MovePolygonRadio_CheckedChanged(object sender, EventArgs e)
         {
-            if (MovePolygonRadio.Checked)
+            if (movePolygonRadio.Checked)
             {
                 manager.ChangeMode(Mode.MovePolygon);
+            }
+        }
+
+        private void perpendicularRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (perpendicularRadio.Checked)
+            {
+                manager.ChangeMode(Mode.AddPerpendicularEdges);
             }
         }
 
@@ -112,5 +132,17 @@ namespace PolygonEditor
         {
             manager.ReinstallBoard();
         }
+
+        private void bresenhamDrawingRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            manager.ChangeDrawingType(DrawingType.Bresenham);
+        }
+
+        private void libraryDrawingRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            manager.ChangeDrawingType(DrawingType.Library);
+        }
+
+        
     }
 }

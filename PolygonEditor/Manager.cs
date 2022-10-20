@@ -1,4 +1,5 @@
 ﻿using PolygonEditor.Drawing;
+using PolygonEditor.Model.Constraints;
 using PolygonEditor.ScreenCatchers;
 using PolygonEditor.State;
 using System;
@@ -16,6 +17,7 @@ namespace PolygonEditor
         AddRemoveVertex,
         MoveElements,
         MovePolygon,
+        AddPerpendicularEdges,
     }
 
     internal class Manager
@@ -27,12 +29,16 @@ namespace PolygonEditor
         public BoardDrawer drawer;
         public BaseScreenCatcher screenCatcher;
         public BoardState state = new BoardState();
+        public ConstraintController constraintController;
 
         public Manager(PictureBox canvas)
         {
             this.canvas = canvas;
             drawer = new BoardDrawer(canvas, state, DrawingType.Library);
-            screenCatcher = new AddPolygonScreenCatcher(state, drawer);
+
+            constraintController = new ConstraintController(state);            
+
+            screenCatcher = new AddPolygonScreenCatcher(state, drawer, constraintController);
         }
 
         public void ChangeMode(Mode mode)
@@ -43,6 +49,8 @@ namespace PolygonEditor
             }
 
             changeMode(mode);
+
+            drawer.Refresh();
         }
 
         public void ReinstallBoard()
@@ -69,19 +77,23 @@ namespace PolygonEditor
         {
             if (mode == Mode.AddPolygon)
             {
-                screenCatcher = new AddPolygonScreenCatcher(state, drawer);
+                screenCatcher = new AddPolygonScreenCatcher(state, drawer, constraintController);
             }
             else if (mode == Mode.AddRemoveVertex)
             {
-                screenCatcher = new AddRemoveVertexScreenCatcher(state, drawer);
+                screenCatcher = new AddRemoveVertexScreenCatcher(state, drawer, constraintController);
             }
             else if (mode == Mode.MoveElements)
             {
-                screenCatcher = new MoveScreenCatcher(state, drawer);
+                screenCatcher = new MoveElementsScreenCatcher(state, drawer, constraintController);
             }
             else if (mode == Mode.MovePolygon)
             {
-                screenCatcher = new MovePolygonScreenCatcher(state, drawer);
+                screenCatcher = new MovePolygonScreenCatcher(state, drawer, constraintController);
+            }
+            else if (mode == Mode.AddPerpendicularEdges)
+            {
+                screenCatcher = new AddConstraintsScreenCatcher(state, drawer, constraintController);
             }
         }
     }

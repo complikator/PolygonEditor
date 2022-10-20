@@ -15,7 +15,7 @@ namespace PolygonEditor.Drawing
         Library,
         Bresenham,
     }
-    internal class BoardDrawer
+    public class BoardDrawer
     {
         private DrawingType? currentDrawingType = null;
         private PictureBox canvas;

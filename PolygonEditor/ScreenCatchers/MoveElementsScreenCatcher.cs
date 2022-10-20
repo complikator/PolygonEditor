@@ -8,10 +8,11 @@ using PolygonEditor.Helpers;
 using PolygonEditor.Validators;
 using System.Threading.Tasks;
 using PolygonEditor.Model;
+using PolygonEditor.Model.Constraints;
 
 namespace PolygonEditor.ScreenCatchers
 {
-    internal class MoveScreenCatcher : BaseScreenCatcher
+    internal class MoveElementsScreenCatcher : BaseScreenCatcher
     {
         private MoveElementValidator moveElementValidator;
 
@@ -26,10 +27,16 @@ namespace PolygonEditor.ScreenCatchers
 
         private (int x, int y) startMousePosition;
 
-        public MoveScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
+        public MoveElementsScreenCatcher(BoardState state, BoardDrawer drawer, ConstraintController constraintController) : base(state, drawer, constraintController)
         {
             this.moveElementValidator = new MoveElementValidator(state);
         }
+
+        public override void Destroy()
+        {
+
+        }
+
         /// <summary>
         /// Start moving vertex
         /// </summary>
@@ -65,25 +72,34 @@ namespace PolygonEditor.ScreenCatchers
         {
             if (isVertexMoving)
             {
-                if (moveElementValidator.isPossibleToMoveVertex(currentVertex.v, x, y))
-                {
-                    int newX = startVertexPosition.x + (x - startMousePosition.x);
-                    int newY = startVertexPosition.y + (y - startMousePosition.y);
-                    currentVertex.polygon.MoveVertex(currentVertex.v, newX, newY);
-                }
+                int newX = startVertexPosition.x + (x - startMousePosition.x);
+                int newY = startVertexPosition.y + (y - startMousePosition.y);
+                //if (moveElementValidator.isPossibleToMoveVertex(currentVertex.v, x, y))
+                //{
+                //    int newX = startVertexPosition.x + (x - startMousePosition.x);
+                //    int newY = startVertexPosition.y + (y - startMousePosition.y);
+                //    currentVertex.polygon.MoveVertex(currentVertex.v, newX, newY);
+                //}
+
+                constraintController.TryMoveVertex(currentVertex.v, newX, newY);
+
             }
             else if (isEdgeMoving)
             {
-                if (moveElementValidator.isPossibleToMoveEdge(currentEdge.e, x - startMousePosition.x, y - startMousePosition.y))
-                {
-                    (int x, int y) newBeginning = (startEdgePosition.beginning.x + (x - startMousePosition.x),
+                (int x, int y) newBeginning = (startEdgePosition.beginning.x + (x - startMousePosition.x),
                         startEdgePosition.beginning.y + (y - startMousePosition.y));
-                    (int x, int y) newEnd = (startEdgePosition.end.x + (x - startMousePosition.x),
-                        startEdgePosition.end.y + (y - startMousePosition.y));
+                (int x, int y) newEnd = (startEdgePosition.end.x + (x - startMousePosition.x),
+                    startEdgePosition.end.y + (y - startMousePosition.y));
 
-                    currentEdge.polygon.MoveVertex(currentEdge.e.beginning, newBeginning.x, newBeginning.y);
-                    currentEdge.polygon.MoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
-                }
+                //if (moveElementValidator.isPossibleToMoveEdge(currentEdge.e, x - startMousePosition.x, y - startMousePosition.y))
+                //{
+
+                //    currentEdge.polygon.MoveVertex(currentEdge.e.beginning, newBeginning.x, newBeginning.y);
+                //    currentEdge.polygon.MoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
+                //}
+
+                constraintController.TryMoveVertex(currentEdge.e.beginning, newBeginning.x, newBeginning.y);
+                constraintController.TryMoveVertex(currentEdge.e.end, newEnd.x, newEnd.y);
             }
 
             drawer.Refresh();

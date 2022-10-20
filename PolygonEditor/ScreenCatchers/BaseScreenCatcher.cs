@@ -1,4 +1,5 @@
 ﻿using PolygonEditor.Drawing;
+using PolygonEditor.Model.Constraints;
 using PolygonEditor.State;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace PolygonEditor.ScreenCatchers
     {
         public BoardState state;
         public BoardDrawer drawer;
+        public ConstraintController constraintController;
 
-        public BaseScreenCatcher(BoardState state, BoardDrawer drawer)
+        public BaseScreenCatcher(BoardState state, BoardDrawer drawer, ConstraintController constraintController)
         {
             this.state = state;
             this.drawer = drawer;
+            this.constraintController = constraintController;
         }
 
         public abstract void LeftMouseDown(int x, int y);
@@ -28,5 +31,7 @@ namespace PolygonEditor.ScreenCatchers
         public abstract void RightMouseUp(int x, int y);
 
         public abstract void MouseMove(int x, int y);
+
+        public abstract void Destroy();
     }
 }

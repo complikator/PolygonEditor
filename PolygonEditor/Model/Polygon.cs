@@ -95,7 +95,7 @@ namespace PolygonEditor.Model
             {
                 Edges.Remove(Edges.Find(e => e.beginning == which));
                 Edges.Remove(Edges.Find(e => e.end == which));
-                Edges.Add(new Edge(Vertices[Vertices.Count - 1], Vertices[0]));
+                Edges.Add(new Edge(Vertices[Vertices.Count - 2], Vertices[0]));
 
                 Vertices.RemoveAt(index);
             }

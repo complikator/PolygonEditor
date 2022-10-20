@@ -1,5 +1,6 @@
 ﻿using PolygonEditor.Creation;
 using PolygonEditor.Drawing;
+using PolygonEditor.Model.Constraints;
 using PolygonEditor.State;
 using PolygonEditor.Validators;
 using System;
@@ -16,10 +17,16 @@ namespace PolygonEditor.ScreenCatchers
         private bool buildingInProgress = false;
         private PolygonBuilder builder;
 
-        public AddPolygonScreenCatcher(BoardState state, BoardDrawer drawer) : base(state, drawer)
+        public AddPolygonScreenCatcher(BoardState state, BoardDrawer drawer, ConstraintController constraintController) : base(state, drawer, constraintController)
         {
             this.addVertexValidator = new AddVertexValidator(state);
         }
+
+        public override void Destroy()
+        {
+            
+        }
+
         public override void LeftMouseDown(int x, int y)
         {
             
