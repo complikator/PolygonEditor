@@ -11,6 +11,9 @@ namespace PolygonEditor.Model
         public int x;
         public int y;
 
+        public Edge Before;
+        public Edge After;
+
         public Vertex(int x, int y)
         {
             this.x = x;

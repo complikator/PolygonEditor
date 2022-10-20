@@ -35,7 +35,10 @@ namespace PolygonEditor.Model
         {
             if (Vertices.Count > 0)
             {
-                Edges.Add(new Edge(Vertices[Vertices.Count - 1], vertex));
+                Edge temp = new Edge(Vertices[Vertices.Count - 1], vertex);
+                Edges.Add(temp);
+                Vertices[Vertices.Count - 1].After = temp;
+                vertex.Before = temp;
             }
             Vertices.Add(vertex);
         }
@@ -55,7 +58,11 @@ namespace PolygonEditor.Model
             Vertex first = Vertices[0];
             Vertex last = Vertices[Vertices.Count - 1];
 
-            Edges.Add(new Edge(last, first));
+            Edge temp = new Edge(last, first);
+            Edges.Add(temp);
+
+            last.After = temp;
+            first.Before = temp;
 
             isFinished = true;
         }
@@ -88,22 +95,41 @@ namespace PolygonEditor.Model
             {
                 Edges.Remove(Edges.Find(e => e.beginning == which));
                 Edges.Remove(Edges.Find(e => e.end == which));
-                
-                Edges.Add(new Edge(Vertices[Vertices.Count - 1], Vertices[0]));
+
+                Edge temp = new Edge(Vertices[Vertices.Count - 1], Vertices[0]);
+
+                Edges.Add(temp);
+
+                Vertices.RemoveAt(index);
+
+                Vertices[0].Before = temp;
+                Vertices[Vertices.Count - 1].After = temp;
             }
             else if (index == Vertices.Count - 1)
             {
                 Edges.Remove(Edges.Find(e => e.beginning == which));
                 Edges.Remove(Edges.Find(e => e.end == which));
-                Edges.Add(new Edge(Vertices[Vertices.Count - 2], Vertices[0]));
+
+                Edge temp = new Edge(Vertices[Vertices.Count - 2], Vertices[0]);
+
+                Edges.Add(temp);
 
                 Vertices.RemoveAt(index);
+
+                Vertices[0].Before = temp;
+                Vertices[Vertices.Count - 1].After = temp;
             }
             else
             {
                 Edges.Remove(Edges.Find(e => e.beginning == which));
                 Edges.Remove(Edges.Find(e => e.end == which));
-                Edges.Add(new Edge(Vertices[index - 1], Vertices[index + 1]));
+
+                Edge temp = new Edge(Vertices[index - 1], Vertices[index + 1]);
+
+                Edges.Add(temp);
+
+                Vertices[index - 1].After = temp;
+                Vertices[index + 1].Before = temp;
 
                 Vertices.Remove(which);
             }
@@ -114,10 +140,21 @@ namespace PolygonEditor.Model
             Vertex v = new Vertex((which.beginning.x + which.end.x) / 2, (which.beginning.y + which.end.y) / 2);
 
             Edges.Remove(which);
-            Edges.Add(new Edge(which.beginning, v));
-            Edges.Add(new Edge(v, which.end));
+
+            Edge tempBefore = new Edge(which.beginning, v);
+            Edge tempAfter = new Edge(v, which.end);
+
+            Edges.Add(tempBefore);
+            Edges.Add(tempAfter);
 
             int index = Vertices.IndexOf(which.beginning);
+
+            Vertices[index].After = tempBefore;
+            Vertices[index + 1].Before = tempAfter;
+
+            v.Before = tempBefore;
+            v.After = tempAfter;
+
             Vertices.Insert(index + 1, v);
         }
 
