@@ -1,12 +1,7 @@
 ﻿using PolygonEditor.Drawing;
 using PolygonEditor.State;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PolygonEditor.Helpers;
-using PolygonEditor.Validators;
-using System.Threading.Tasks;
 using PolygonEditor.Model;
 using PolygonEditor.Model.Constraints;
 
@@ -14,8 +9,6 @@ namespace PolygonEditor.ScreenCatchers
 {
     internal class MoveElementsScreenCatcher : BaseScreenCatcher
     {
-        private MoveElementValidator moveElementValidator;
-
         private bool isVertexMoving = false;
         private bool isEdgeMoving = false;
 
@@ -29,7 +22,7 @@ namespace PolygonEditor.ScreenCatchers
 
         public MoveElementsScreenCatcher(BoardState state, BoardDrawer drawer, ConstraintController constraintController) : base(state, drawer, constraintController)
         {
-            this.moveElementValidator = new MoveElementValidator(state);
+
         }
 
         public override void Destroy()

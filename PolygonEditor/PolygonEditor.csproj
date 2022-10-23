@@ -77,8 +77,6 @@
     <Compile Include="ScreenCatchers\MoveElementsScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\RemoveConstraintsScreenCatcher.cs" />
     <Compile Include="State\BoardState.cs" />
-    <Compile Include="Validators\AddVertexValidator.cs" />
-    <Compile Include="Validators\MoveElementValidator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
