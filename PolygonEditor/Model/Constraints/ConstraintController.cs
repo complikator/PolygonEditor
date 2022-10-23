@@ -67,11 +67,6 @@ namespace PolygonEditor.Model.Constraints
 
             bool adjustResult = tryApplyConstraintsTwoSide(vertex, vertex);
 
-            if (!adjustResult)
-            {
-                adjustResult = tryApplyConstraintsTwoSide(vertex.After.end, vertex.After.end);
-            }
-
             if (adjustResult)
             {
                 Console.WriteLine("Moving vertex: SUCCESS");
