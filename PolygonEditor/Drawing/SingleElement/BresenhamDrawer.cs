@@ -12,9 +12,9 @@ namespace PolygonEditor.Drawing
 
         }
 
-        private void drawLine(Edge edge)
+        protected override void drawLine(Edge edge)
         {
-            bresenhamLine(edge.beginning.x, edge.beginning.y, edge.end.x, edge.end.y, new Pen(Color.Red, 2));
+            bresenhamLine(edge.beginning.x, edge.beginning.y, edge.end.x, edge.end.y, defaultPen);
         }
 
         private void bresenhamLine(int x, int y, int x2, int y2, Pen pen)

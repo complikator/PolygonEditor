@@ -40,7 +40,7 @@ namespace PolygonEditor.Drawing
 
         #region private members
 
-        private void drawLine(Edge edge)
+        protected virtual void drawLine(Edge edge)
         {
             using (Graphics g = Graphics.FromImage(drawingArea))
             {
