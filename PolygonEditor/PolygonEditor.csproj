@@ -69,7 +69,7 @@
     <Compile Include="Model\Vertex.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenCatchers\AddPerpendicularEdgesScreenCatcher.cs" />
+    <Compile Include="ScreenCatchers\AddConstraintsScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\AddPolygonScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\AddRemoveVertexScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\BaseScreenCatcher.cs" />

@@ -37,10 +37,20 @@ namespace PolygonEditor.ScreenCatchers
 
             if (first == null)
             {
+                if (found.nearest.Constraint != null)
+                {
+                    throw new Exception("This edge already has constraint!");
+                }
+
                 first = found.nearest;
             }
             else if (found.nearest != first)
             {
+                if (found.nearest.Constraint != null)
+                {
+                    throw new Exception("This edge already has constraint!");
+                }
+
                 second = found.nearest;
 
                 bool result = constraintController.TryAddPerpendicularConstaint(first, second);
@@ -79,6 +89,11 @@ namespace PolygonEditor.ScreenCatchers
             if (found.nearest == null)
             {
                 return;
+            }
+
+            if (found.nearest.Constraint != null)
+            {
+                throw new Exception("This edge already has constraint!");
             }
 
             bool result = constraintController.TryAddFixedLengthConstraint(found.nearest);
