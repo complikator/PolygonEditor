@@ -84,55 +84,27 @@ namespace PolygonEditor.Model
                 throw new Exception($"Cannot remove vertex, minimal number of vertices in polygon: {Polygon.MINIMAL_VERTICES_NUMBER}");
             }
 
-            int index = Vertices.IndexOf(which);
-
-            if (index == -1)
+            if (Vertices.IndexOf(which) == -1)
             {
                 return;
             }
 
-            if (index == 0)
-            {
-                Edges.Remove(Edges.Find(e => e.beginning == which));
-                Edges.Remove(Edges.Find(e => e.end == which));
+            // remove old edges
+            Edges.Remove(Edges.Find(e => e.beginning == which));
+            Edges.Remove(Edges.Find(e => e.end == which));
 
-                Edge temp = new Edge(Vertices[Vertices.Count - 1], Vertices[0]);
+            Vertex previous = which.Before.beginning;
+            Vertex next = which.After.end;
 
-                Edges.Add(temp);
+            Edge temp = new Edge(previous, next);
 
-                Vertices.RemoveAt(index);
+            Edges.Add(temp);
 
-                Vertices[0].Before = temp;
-                Vertices[Vertices.Count - 1].After = temp;
-            }
-            else if (index == Vertices.Count - 1)
-            {
-                Edges.Remove(Edges.Find(e => e.beginning == which));
-                Edges.Remove(Edges.Find(e => e.end == which));
+            previous.After = temp;
+            next.Before = temp;
 
-                Edge temp = new Edge(Vertices[Vertices.Count - 2], Vertices[0]);
+            Vertices.Remove(which);
 
-                Edges.Add(temp);
-
-                Vertices.RemoveAt(index);
-
-                Vertices[0].Before = temp;
-                Vertices[Vertices.Count - 1].After = temp;
-            }
-            else
-            {
-                Edges.Remove(Edges.Find(e => e.beginning == which));
-                Edges.Remove(Edges.Find(e => e.end == which));
-
-                Edge temp = new Edge(Vertices[index - 1], Vertices[index + 1]);
-
-                Edges.Add(temp);
-
-                Vertices[index - 1].After = temp;
-                Vertices[index + 1].Before = temp;
-
-                Vertices.Remove(which);
-            }
         }
 
         public void addMiddleVertex(Edge which)
@@ -150,7 +122,7 @@ namespace PolygonEditor.Model
             int index = Vertices.IndexOf(which.beginning);
 
             Vertices[index].After = tempBefore;
-            Vertices[index + 1].Before = tempAfter;
+            Vertices[(index + 1) % Vertices.Count].Before = tempAfter;
 
             v.Before = tempBefore;
             v.After = tempAfter;
