@@ -43,7 +43,7 @@ namespace PolygonEditor.ScreenCatchers
             {
                 second = found.nearest;
 
-                bool result = constraintController.TryAddPerpendicularConstaint(first, second, drawer);
+                bool result = constraintController.TryAddPerpendicularConstaint(first, second);
 
                 drawer.Refresh();
 
@@ -81,7 +81,7 @@ namespace PolygonEditor.ScreenCatchers
                 return;
             }
 
-            bool result = constraintController.TryAddFixedLengthConstraint(found.nearest, drawer);
+            bool result = constraintController.TryAddFixedLengthConstraint(found.nearest);
 
             drawer.Refresh();
 

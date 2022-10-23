@@ -1,12 +1,5 @@
-﻿using PolygonEditor.Drawing;
-using PolygonEditor.State;
+﻿using PolygonEditor.State;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PolygonEditor.Model.Constraints
 {
@@ -21,7 +14,7 @@ namespace PolygonEditor.Model.Constraints
             this.state = state;
         }
 
-        public bool TryAddPerpendicularConstaint(Edge first, Edge second, BoardDrawer drawer)
+        public bool TryAddPerpendicularConstaint(Edge first, Edge second)
         {
             state.MakeSnapshot();
 
@@ -30,7 +23,7 @@ namespace PolygonEditor.Model.Constraints
             first.Constraint = constraint;
             second.Constraint = constraint;
 
-            bool adjustResult = tryApplyConstraints(drawer, null);
+            bool adjustResult = tryApplyConstraintsTwoSide(first.beginning, first.beginning);
 
             if (adjustResult)
             {
@@ -43,14 +36,14 @@ namespace PolygonEditor.Model.Constraints
             }
         }
 
-        public bool TryAddFixedLengthConstraint(Edge edge, BoardDrawer drawer)
+        public bool TryAddFixedLengthConstraint(Edge edge)
         {
             state.MakeSnapshot();
 
             FixedLengthConstraint fixedLength = new FixedLengthConstraint(edge);
             edge.Constraint = fixedLength;
 
-            bool adjustResult = tryApplyConstraints(drawer, null);
+            bool adjustResult = tryApplyConstraintsTwoSide(edge.beginning, edge.beginning);
 
             if (adjustResult)
             {
@@ -165,73 +158,6 @@ namespace PolygonEditor.Model.Constraints
                             break;
                         }
                     }
-                }
-
-                if (isGood)
-                {
-                    Console.WriteLine($"Fixing finished, iterations: {i}");
-                    break;
-                }
-            }
-
-            foreach (Polygon p in state.polygons)
-            {
-                foreach (Edge e in p.Edges)
-                {
-                    if (e.Constraint == null)
-                    {
-                        continue;
-                    }
-
-                    if (e.Constraint.IsFulfilled == false)
-                    {
-                        Console.WriteLine("FIXING FAILED");
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        private bool tryApplyConstraints(BoardDrawer drawer, Vertex pattern)
-        {
-            for (int i = 0; i < ConstraintController.MAX_ITERATIONS; i++)
-            {
-                bool isGood = true;
-                foreach (Polygon p in state.polygons)
-                {
-                    Edge temp = p.Edges.Find(e => e.beginning == pattern);
-                    int currentEdgeIndex = p.Edges.IndexOf(temp ?? p.Edges[0]);
-                    for (int j = 0; j < p.Edges.Count; j++)
-                    {
-                        Edge e = p.Edges[(currentEdgeIndex + j) % p.Edges.Count];
-                        if (e.Constraint == null)
-                        {
-                            continue;
-                        }
-                        Console.WriteLine("Controller checking constraint...");
-                        if (e.Constraint.IsFulfilled == false)
-                        {
-                            Console.WriteLine("Controller trying to fix constraint");
-                            //if (new List<Vertex>() { e.beginning, e.end }.Contains(pattern))
-                            //{
-                            //    e.Constraint.Enforce(pattern);
-                            //}else
-                            //{
-                            //    e.Constraint.Enforce();
-                            //}
-
-                            e.Constraint.Enforce(e.beginning);
-
-                            isGood = false;
-                        }
-                    }
-                }
-
-                if (drawer != null)
-                {
-                    drawer.Refresh();
                 }
 
                 if (isGood)
