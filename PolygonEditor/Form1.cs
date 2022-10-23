@@ -124,8 +124,13 @@ namespace PolygonEditor
         {
             if (perpendicularRadio.Checked)
             {
-                manager.ChangeMode(Mode.AddPerpendicularEdges);
+                manager.ChangeMode(Mode.AddConstraints);
             }
+        }
+
+        private void removeConstraintsRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            manager.ChangeMode(Mode.RemoveConstraints);
         }
 
         private void canvas_SizeChanged(object sender, EventArgs e)
@@ -143,6 +148,5 @@ namespace PolygonEditor
             manager.ChangeDrawingType(DrawingType.Library);
         }
 
-        
     }
 }

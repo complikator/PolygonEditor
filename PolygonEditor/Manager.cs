@@ -17,7 +17,8 @@ namespace PolygonEditor
         AddRemoveVertex,
         MoveElements,
         MovePolygon,
-        AddPerpendicularEdges,
+        AddConstraints,
+        RemoveConstraints,
     }
 
     internal class Manager
@@ -91,9 +92,13 @@ namespace PolygonEditor
             {
                 screenCatcher = new MovePolygonScreenCatcher(state, drawer, constraintController);
             }
-            else if (mode == Mode.AddPerpendicularEdges)
+            else if (mode == Mode.AddConstraints)
             {
                 screenCatcher = new AddConstraintsScreenCatcher(state, drawer, constraintController);
+            }
+            else if (mode == Mode.RemoveConstraints)
+            {
+                screenCatcher = new RemoveConstraintsScreenCatcher(state, drawer, constraintController);
             }
         }
     }

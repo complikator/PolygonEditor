@@ -43,6 +43,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.libraryDrawingRadio = new System.Windows.Forms.RadioButton();
             this.bresenhamDrawingRadio = new System.Windows.Forms.RadioButton();
+            this.removeConstraintsRadio = new System.Windows.Forms.RadioButton();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.rightPanel.SuspendLayout();
@@ -120,6 +121,7 @@
             this.modePanel.Controls.Add(this.moveElementsRadio, 0, 2);
             this.modePanel.Controls.Add(this.movePolygonRadio, 0, 3);
             this.modePanel.Controls.Add(this.perpendicularRadio, 0, 4);
+            this.modePanel.Controls.Add(this.removeConstraintsRadio, 0, 5);
             this.modePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modePanel.Location = new System.Drawing.Point(3, 16);
             this.modePanel.Name = "modePanel";
@@ -258,6 +260,18 @@
             this.bresenhamDrawingRadio.UseVisualStyleBackColor = true;
             this.bresenhamDrawingRadio.CheckedChanged += new System.EventHandler(this.bresenhamDrawingRadio_CheckedChanged);
             // 
+            // removeConstraintsRadio
+            // 
+            this.removeConstraintsRadio.AutoSize = true;
+            this.removeConstraintsRadio.Location = new System.Drawing.Point(3, 258);
+            this.removeConstraintsRadio.Name = "removeConstraintsRadio";
+            this.removeConstraintsRadio.Size = new System.Drawing.Size(115, 17);
+            this.removeConstraintsRadio.TabIndex = 5;
+            this.removeConstraintsRadio.TabStop = true;
+            this.removeConstraintsRadio.Text = "Remove Constraint";
+            this.removeConstraintsRadio.UseVisualStyleBackColor = true;
+            this.removeConstraintsRadio.CheckedChanged += new System.EventHandler(this.removeConstraintsRadio_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +311,7 @@
         private System.Windows.Forms.RadioButton libraryDrawingRadio;
         private System.Windows.Forms.RadioButton bresenhamDrawingRadio;
         private System.Windows.Forms.RadioButton perpendicularRadio;
+        private System.Windows.Forms.RadioButton removeConstraintsRadio;
     }
 }
 
