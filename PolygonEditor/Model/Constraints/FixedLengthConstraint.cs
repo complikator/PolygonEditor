@@ -51,5 +51,10 @@ namespace PolygonEditor.Model.Constraints
 
             Console.WriteLine($"fixed length: {DesiredLength} <> {Geometry.GetEdgeLength(Edge)}");
         }
+
+        public override void Remove()
+        {
+            this.Edge.Constraint = null;
+        }
     }
 }

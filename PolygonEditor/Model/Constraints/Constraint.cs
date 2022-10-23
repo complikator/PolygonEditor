@@ -15,5 +15,7 @@ namespace PolygonEditor.Model.Constraints
         /// </summary>
         /// <param name="pattern">this vertex won't be changed during enforcement</param>
         public abstract void Enforce(Vertex pattern = null);
+
+        public abstract void Remove();
     }
 }

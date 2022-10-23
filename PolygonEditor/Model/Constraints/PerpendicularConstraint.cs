@@ -102,6 +102,10 @@ namespace PolygonEditor.Model.Constraints
             Console.WriteLine($"AFTER FIX: firstRate: {Geometry.GetEdgeRate(containingEdge)}, secondRate: {Geometry.GetEdgeRate(patternEdge)}");
         }
 
-
+        public override void Remove()
+        {
+            this.first.Constraint = null;
+            this.second.Constraint = null;
+        }
     }
 }

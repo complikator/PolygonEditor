@@ -186,10 +186,10 @@
             this.perpendicularRadio.AutoSize = true;
             this.perpendicularRadio.Location = new System.Drawing.Point(3, 207);
             this.perpendicularRadio.Name = "perpendicularRadio";
-            this.perpendicularRadio.Size = new System.Drawing.Size(122, 17);
+            this.perpendicularRadio.Size = new System.Drawing.Size(94, 17);
             this.perpendicularRadio.TabIndex = 4;
             this.perpendicularRadio.TabStop = true;
-            this.perpendicularRadio.Text = "Perpendicular edges";
+            this.perpendicularRadio.Text = "Add Constraint";
             this.perpendicularRadio.UseVisualStyleBackColor = true;
             this.perpendicularRadio.CheckedChanged += new System.EventHandler(this.perpendicularRadio_CheckedChanged);
             // 

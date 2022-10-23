@@ -90,9 +90,23 @@ namespace PolygonEditor.Model
             }
 
             // remove old edges
-            Edges.Remove(Edges.Find(e => e.beginning == which));
-            Edges.Remove(Edges.Find(e => e.end == which));
+            Edge oldBefore = Edges.Find(e => e.beginning == which);
+            Edge oldAfter = Edges.Find(e => e.end == which);
+            Edges.Remove(oldBefore);
+            Edges.Remove(oldAfter);
 
+            // remove old edges constraints
+            if (oldBefore.Constraint != null)
+            {
+                oldBefore.Constraint.Remove();
+            }
+
+            if (oldAfter.Constraint != null)
+            {
+                oldAfter.Constraint.Remove();
+            }
+
+            // add new edge
             Vertex previous = which.Before.beginning;
             Vertex next = which.After.end;
 
@@ -104,21 +118,28 @@ namespace PolygonEditor.Model
             next.Before = temp;
 
             Vertices.Remove(which);
-
         }
 
         public void addMiddleVertex(Edge which)
         {
             Vertex v = new Vertex((which.beginning.x + which.end.x) / 2, (which.beginning.y + which.end.y) / 2);
 
+            // remove old edge and its constraint
             Edges.Remove(which);
 
+            if (which.Constraint != null)
+            {
+                which.Constraint.Remove();
+            }
+
+            // add new edges
             Edge tempBefore = new Edge(which.beginning, v);
             Edge tempAfter = new Edge(v, which.end);
 
             Edges.Add(tempBefore);
             Edges.Add(tempAfter);
 
+            // add new vertex and update info
             int index = Vertices.IndexOf(which.beginning);
 
             Vertices[index].After = tempBefore;
