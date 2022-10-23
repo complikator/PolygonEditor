@@ -14,17 +14,6 @@ namespace PolygonEditor
 {
     public partial class Form1 : Form
     {
-        //#region to remove
-        //private void Form1_Load(object sender, EventArgs e)
-        //{
-        //    AllocConsole();
-        //}
-
-        //[DllImport("kernel32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //static extern bool AllocConsole();
-
-        //#endregion
         Manager manager;
         public Form1()
         {
