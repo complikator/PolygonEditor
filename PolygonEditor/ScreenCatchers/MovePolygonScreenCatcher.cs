@@ -57,8 +57,8 @@ namespace PolygonEditor.ScreenCatchers
                 for (int i = 0; i < currentPolygon.Vertices.Count; i++)
                 {
                     currentPolygon.MoveVertex(currentPolygon.Vertices[i],
-                        startVerticesPositions[i].x + (x - startMousePosition.x),
-                        startVerticesPositions[i].y + (y - startMousePosition.y));
+                        startVerticesPositions[i].x + xDist,
+                        startVerticesPositions[i].y + yDist);
                 }
             }
 
