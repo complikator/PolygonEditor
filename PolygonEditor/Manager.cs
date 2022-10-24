@@ -1,4 +1,5 @@
-﻿using PolygonEditor.Drawing;
+﻿using PolygonEditor.Creation;
+using PolygonEditor.Drawing;
 using PolygonEditor.Model.Constraints;
 using PolygonEditor.ScreenCatchers;
 using PolygonEditor.State;
@@ -35,6 +36,40 @@ namespace PolygonEditor
             constraintController = new ConstraintController(state);            
 
             screenCatcher = new AddPolygonScreenCatcher(state, drawer, constraintController);
+
+            initDemo();
+        }
+
+        private void initDemo()
+        {
+            var builder = new PolygonBuilder();
+
+            builder.addVertex(100, 100);
+            builder.addVertex(200, 100);
+            builder.addVertex(200, 200);
+            builder.addVertex(100, 200);
+
+            var firstPolygon = builder.build();
+
+            builder = new PolygonBuilder();
+
+            builder.addVertex(300, 300);
+            builder.addVertex(400, 500);
+            builder.addVertex(500, 600);
+            builder.addVertex(600, 300);
+
+            var secondPolygon = builder.build();
+
+            state.polygons.Add(firstPolygon);
+            state.polygons.Add(secondPolygon);
+
+            constraintController.TryAddFixedLengthConstraint(secondPolygon.Edges[0]);
+            constraintController.TryAddFixedLengthConstraint(secondPolygon.Edges[1]);
+
+            constraintController.TryAddPerpendicularConstaint(firstPolygon.Edges[0], firstPolygon.Edges[1]);
+            constraintController.TryAddPerpendicularConstaint(firstPolygon.Edges[2], firstPolygon.Edges[3]);
+
+            drawer.Refresh();
         }
 
         public void ChangeMode(Mode mode)
