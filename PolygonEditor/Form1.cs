@@ -113,6 +113,10 @@ namespace PolygonEditor
         {
             manager.ChangeMode(Mode.RemoveConstraints);
         }
+        private void removePolygonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            manager.ChangeMode(Mode.RemovePolygon);
+        }
 
         private void canvas_SizeChanged(object sender, EventArgs e)
         {

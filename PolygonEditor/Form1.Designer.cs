@@ -38,12 +38,13 @@
             this.moveElementsRadio = new System.Windows.Forms.RadioButton();
             this.movePolygonRadio = new System.Windows.Forms.RadioButton();
             this.perpendicularRadio = new System.Windows.Forms.RadioButton();
+            this.removeConstraintsRadio = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.drawingTypeBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.libraryDrawingRadio = new System.Windows.Forms.RadioButton();
             this.bresenhamDrawingRadio = new System.Windows.Forms.RadioButton();
-            this.removeConstraintsRadio = new System.Windows.Forms.RadioButton();
+            this.removePolygonRadio = new System.Windows.Forms.RadioButton();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.rightPanel.SuspendLayout();
@@ -115,23 +116,24 @@
             // 
             this.modePanel.ColumnCount = 1;
             this.modePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.modePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.modePanel.Controls.Add(this.addPolygonRadio, 0, 0);
             this.modePanel.Controls.Add(this.addRemoveVertexRadio, 0, 1);
             this.modePanel.Controls.Add(this.moveElementsRadio, 0, 2);
             this.modePanel.Controls.Add(this.movePolygonRadio, 0, 3);
             this.modePanel.Controls.Add(this.perpendicularRadio, 0, 4);
             this.modePanel.Controls.Add(this.removeConstraintsRadio, 0, 5);
+            this.modePanel.Controls.Add(this.removePolygonRadio, 0, 6);
             this.modePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modePanel.Location = new System.Drawing.Point(3, 16);
             this.modePanel.Name = "modePanel";
-            this.modePanel.RowCount = 6;
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.modePanel.RowCount = 7;
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28551F));
+            this.modePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28694F));
             this.modePanel.Size = new System.Drawing.Size(132, 308);
             this.modePanel.TabIndex = 0;
             // 
@@ -150,7 +152,7 @@
             // addRemoveVertexRadio
             // 
             this.addRemoveVertexRadio.AutoSize = true;
-            this.addRemoveVertexRadio.Location = new System.Drawing.Point(3, 54);
+            this.addRemoveVertexRadio.Location = new System.Drawing.Point(3, 46);
             this.addRemoveVertexRadio.Name = "addRemoveVertexRadio";
             this.addRemoveVertexRadio.Size = new System.Drawing.Size(126, 17);
             this.addRemoveVertexRadio.TabIndex = 1;
@@ -162,7 +164,7 @@
             // moveElementsRadio
             // 
             this.moveElementsRadio.AutoSize = true;
-            this.moveElementsRadio.Location = new System.Drawing.Point(3, 105);
+            this.moveElementsRadio.Location = new System.Drawing.Point(3, 89);
             this.moveElementsRadio.Name = "moveElementsRadio";
             this.moveElementsRadio.Size = new System.Drawing.Size(98, 17);
             this.moveElementsRadio.TabIndex = 2;
@@ -174,7 +176,7 @@
             // movePolygonRadio
             // 
             this.movePolygonRadio.AutoSize = true;
-            this.movePolygonRadio.Location = new System.Drawing.Point(3, 156);
+            this.movePolygonRadio.Location = new System.Drawing.Point(3, 132);
             this.movePolygonRadio.Name = "movePolygonRadio";
             this.movePolygonRadio.Size = new System.Drawing.Size(93, 17);
             this.movePolygonRadio.TabIndex = 3;
@@ -186,7 +188,7 @@
             // perpendicularRadio
             // 
             this.perpendicularRadio.AutoSize = true;
-            this.perpendicularRadio.Location = new System.Drawing.Point(3, 207);
+            this.perpendicularRadio.Location = new System.Drawing.Point(3, 175);
             this.perpendicularRadio.Name = "perpendicularRadio";
             this.perpendicularRadio.Size = new System.Drawing.Size(94, 17);
             this.perpendicularRadio.TabIndex = 4;
@@ -194,6 +196,18 @@
             this.perpendicularRadio.Text = "Add Constraint";
             this.perpendicularRadio.UseVisualStyleBackColor = true;
             this.perpendicularRadio.CheckedChanged += new System.EventHandler(this.perpendicularRadio_CheckedChanged);
+            // 
+            // removeConstraintsRadio
+            // 
+            this.removeConstraintsRadio.AutoSize = true;
+            this.removeConstraintsRadio.Location = new System.Drawing.Point(3, 218);
+            this.removeConstraintsRadio.Name = "removeConstraintsRadio";
+            this.removeConstraintsRadio.Size = new System.Drawing.Size(115, 17);
+            this.removeConstraintsRadio.TabIndex = 5;
+            this.removeConstraintsRadio.TabStop = true;
+            this.removeConstraintsRadio.Text = "Remove Constraint";
+            this.removeConstraintsRadio.UseVisualStyleBackColor = true;
+            this.removeConstraintsRadio.CheckedChanged += new System.EventHandler(this.removeConstraintsRadio_CheckedChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -260,17 +274,17 @@
             this.bresenhamDrawingRadio.UseVisualStyleBackColor = true;
             this.bresenhamDrawingRadio.CheckedChanged += new System.EventHandler(this.bresenhamDrawingRadio_CheckedChanged);
             // 
-            // removeConstraintsRadio
+            // removePolygonRadio
             // 
-            this.removeConstraintsRadio.AutoSize = true;
-            this.removeConstraintsRadio.Location = new System.Drawing.Point(3, 258);
-            this.removeConstraintsRadio.Name = "removeConstraintsRadio";
-            this.removeConstraintsRadio.Size = new System.Drawing.Size(115, 17);
-            this.removeConstraintsRadio.TabIndex = 5;
-            this.removeConstraintsRadio.TabStop = true;
-            this.removeConstraintsRadio.Text = "Remove Constraint";
-            this.removeConstraintsRadio.UseVisualStyleBackColor = true;
-            this.removeConstraintsRadio.CheckedChanged += new System.EventHandler(this.removeConstraintsRadio_CheckedChanged);
+            this.removePolygonRadio.AutoSize = true;
+            this.removePolygonRadio.Location = new System.Drawing.Point(3, 261);
+            this.removePolygonRadio.Name = "removePolygonRadio";
+            this.removePolygonRadio.Size = new System.Drawing.Size(106, 17);
+            this.removePolygonRadio.TabIndex = 6;
+            this.removePolygonRadio.TabStop = true;
+            this.removePolygonRadio.Text = "Remove Polygon";
+            this.removePolygonRadio.UseVisualStyleBackColor = true;
+            this.removePolygonRadio.CheckedChanged += new System.EventHandler(this.removePolygonRadio_CheckedChanged);
             // 
             // Form1
             // 
@@ -312,6 +326,7 @@
         private System.Windows.Forms.RadioButton bresenhamDrawingRadio;
         private System.Windows.Forms.RadioButton perpendicularRadio;
         private System.Windows.Forms.RadioButton removeConstraintsRadio;
+        private System.Windows.Forms.RadioButton removePolygonRadio;
     }
 }
 

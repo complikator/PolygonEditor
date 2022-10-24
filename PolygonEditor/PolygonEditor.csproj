@@ -76,6 +76,7 @@
     <Compile Include="ScreenCatchers\MovePolygonScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\MoveElementsScreenCatcher.cs" />
     <Compile Include="ScreenCatchers\RemoveConstraintsScreenCatcher.cs" />
+    <Compile Include="ScreenCatchers\RemovePolygonScreenCatcher.cs" />
     <Compile Include="State\BoardState.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

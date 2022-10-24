@@ -35,4 +35,8 @@ are in relation.
 
 To "freeze" edge's length press right button, this will make length of the nearest edge impossible to change.
 
+### Remove polygon
+
+To remove polygon left click near one of its vertices.
+
 ![application screenshot](/images/simple.png "application screenshot")

@@ -15,6 +15,7 @@ namespace PolygonEditor
         MovePolygon,
         AddConstraints,
         RemoveConstraints,
+        RemovePolygon,
     }
 
     internal class Manager
@@ -129,6 +130,10 @@ namespace PolygonEditor
             else if (mode == Mode.RemoveConstraints)
             {
                 screenCatcher = new RemoveConstraintsScreenCatcher(state, drawer, constraintController);
+            }
+            else if (mode == Mode.RemovePolygon)
+            {
+                screenCatcher = new RemovePolygonScreenCatcher(state, drawer, constraintController);
             }
         }
     }
