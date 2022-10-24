@@ -6,7 +6,7 @@ namespace PolygonEditor.Drawing
 {
     public class Drawer
     {
-        public int vertexRadius = 3;
+        public int vertexRadius = 5;
         protected Bitmap drawingArea;
         protected Brush defaultBrush = Brushes.Black;
         protected Pen defaultPen = new Pen(Color.Black, 1);
