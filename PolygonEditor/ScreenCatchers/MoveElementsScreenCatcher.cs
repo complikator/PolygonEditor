@@ -25,11 +25,6 @@ namespace PolygonEditor.ScreenCatchers
 
         }
 
-        public override void Destroy()
-        {
-
-        }
-
         /// <summary>
         /// Start moving vertex
         /// </summary>

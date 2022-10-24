@@ -4,7 +4,7 @@ using PolygonEditor.State;
 
 namespace PolygonEditor.ScreenCatchers
 {
-    internal abstract class BaseScreenCatcher
+    public abstract class BaseScreenCatcher
     {
         public BoardState state;
         public BoardDrawer drawer;
@@ -17,16 +17,16 @@ namespace PolygonEditor.ScreenCatchers
             this.constraintController = constraintController;
         }
 
-        public abstract void LeftMouseDown(int x, int y);
+        public virtual void LeftMouseDown(int x, int y) { }
 
-        public abstract void LeftMouseUp(int x, int y);
+        public virtual void LeftMouseUp(int x, int y) { }
 
-        public abstract void RightMouseDown(int x, int y);
+        public virtual void RightMouseDown(int x, int y) { }
 
-        public abstract void RightMouseUp(int x, int y);
+        public virtual void RightMouseUp(int x, int y) { }
 
-        public abstract void MouseMove(int x, int y);
+        public virtual void MouseMove(int x, int y) { }
 
-        public abstract void Destroy();
+        public virtual void Destroy() { }
     }
 }

@@ -12,11 +12,6 @@ namespace PolygonEditor.ScreenCatchers
 
         }
 
-        public override void Destroy()
-        {
-            
-        }
-
         public override void LeftMouseDown(int x, int y)
         {
             var found = ScreenToElementFinder.FindNearestEdge(state, x, y);
@@ -30,26 +25,6 @@ namespace PolygonEditor.ScreenCatchers
             }
 
             drawer.Refresh();
-        }
-
-        public override void LeftMouseUp(int x, int y)
-        {
-
-        }
-
-        public override void MouseMove(int x, int y)
-        {
-
-        }
-
-        public override void RightMouseDown(int x, int y)
-        {
-
-        }
-
-        public override void RightMouseUp(int x, int y)
-        {
-
         }
     }
 }

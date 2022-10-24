@@ -14,16 +14,6 @@ namespace PolygonEditor.ScreenCatchers
         {
         }
 
-        public override void Destroy()
-        {
-
-        }
-
-        public override void LeftMouseDown(int x, int y)
-        {
-
-        }
-
         public override void LeftMouseUp(int x, int y)
         {
             if (!buildingInProgress)
@@ -35,16 +25,6 @@ namespace PolygonEditor.ScreenCatchers
             builder.addVertex(x, y);
 
             drawer.DrawWIPPolygon(builder.GetCurrentEdgesCopy());
-        }
-
-        public override void MouseMove(int x, int y)
-        {
-
-        }
-
-        public override void RightMouseDown(int x, int y)
-        {
-
         }
 
         public override void RightMouseUp(int x, int y)

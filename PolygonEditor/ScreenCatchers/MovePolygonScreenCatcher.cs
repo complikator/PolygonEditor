@@ -20,11 +20,6 @@ namespace PolygonEditor.ScreenCatchers
         {
         }
 
-        public override void Destroy()
-        {
-
-        }
-
         public override void LeftMouseDown(int x, int y)
         {
             var found = ScreenToElementFinder.FindNearestPolygon(state, x, y);
@@ -68,16 +63,6 @@ namespace PolygonEditor.ScreenCatchers
             }
 
             drawer.Refresh();
-        }
-
-        public override void RightMouseDown(int x, int y)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void RightMouseUp(int x, int y)
-        {
-            throw new NotImplementedException();
         }
     }
 }

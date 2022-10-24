@@ -11,16 +11,6 @@ namespace PolygonEditor.ScreenCatchers
         {
         }
 
-        public override void Destroy()
-        {
-            
-        }
-
-        public override void LeftMouseDown(int x, int y)
-        {
-
-        }
-
         /// <summary>
         /// Adds new vertex in the middle of existing edge
         /// </summary>
@@ -37,16 +27,6 @@ namespace PolygonEditor.ScreenCatchers
 
             found.polygon.addMiddleVertex(found.nearest);
             drawer.Refresh();
-        }
-
-        public override void MouseMove(int x, int y)
-        {
-
-        }
-
-        public override void RightMouseDown(int x, int y)
-        {
-
         }
 
         /// <summary>
