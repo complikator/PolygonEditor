@@ -35,4 +35,4 @@ are in relation.
 
 To "freeze" edge's length press right button, this will make length of the nearest edge impossible to change.
 
-![application screenshot](/images/simple.png "application screenshot")
+![application screenshot](../images/simple.png "application screenshot")
