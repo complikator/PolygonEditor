@@ -5,9 +5,19 @@ namespace PolygonEditor.Model.Constraints
 {
     public class FixedLengthConstraint : Constraint
     {
+        protected static int globalId = 1;
+
+        protected int id = globalId;
+
         public double DesiredLength;
         public Edge Edge;
-
+        public override int Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public override bool IsFulfilled
         {
             get
@@ -20,6 +30,8 @@ namespace PolygonEditor.Model.Constraints
         {
             DesiredLength = Geometry.GetEdgeLength(edge);
             Edge = edge;
+
+            globalId++;
         }
 
         public override void Enforce(Vertex pattern = null)

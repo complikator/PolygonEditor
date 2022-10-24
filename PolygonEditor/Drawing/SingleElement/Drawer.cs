@@ -10,6 +10,9 @@ namespace PolygonEditor.Drawing
         protected Bitmap drawingArea;
         protected Brush defaultBrush = Brushes.Black;
         protected Pen defaultPen = new Pen(Color.Black, 1);
+        protected Font defaultFont = new Font("Arial", 12);
+        protected Brush perpendicularBrush = Brushes.Red;
+        protected Brush fixedLengthBrush = Brushes.Green;
 
         public Drawer(Bitmap drawingArea)
         {
@@ -30,7 +33,7 @@ namespace PolygonEditor.Drawing
 
         public void DrawPolygon(Polygon polygon)
         {
-            foreach(Edge e in polygon.Edges)
+            foreach (Edge e in polygon.Edges)
             {
                 DrawEdge(e);
             }
@@ -63,13 +66,14 @@ namespace PolygonEditor.Drawing
                 return;
             }
 
+            int x = (edge.beginning.x + edge.end.x) / 2;
+            int y = (edge.beginning.y + edge.end.y) / 2;
+
             if (edge.Constraint is PerpendicularConstraint)
             {
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
-                    int x = (edge.beginning.x + edge.end.x) / 2 + 10;
-                    int y = (edge.beginning.y + edge.end.y) / 2 + 10;
-                    g.FillEllipse(Brushes.Red, x, y, vertexRadius * 2, vertexRadius * 2);
+                    g.DrawString(edge.Constraint.Id.ToString(), defaultFont, perpendicularBrush, x, y);
                 }
             }
 
@@ -77,8 +81,6 @@ namespace PolygonEditor.Drawing
             {
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
-                    int x = (edge.beginning.x + edge.end.x) / 2 + 10;
-                    int y = (edge.beginning.y + edge.end.y) / 2 + 10;
                     g.FillEllipse(Brushes.Green, x, y, vertexRadius * 2, vertexRadius * 2);
                 }
             }

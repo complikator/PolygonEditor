@@ -5,8 +5,22 @@ namespace PolygonEditor.Model.Constraints
 {
     public class PerpendicularConstraint : Constraint
     {
+        protected static int globalId = 1;
+
+        protected int id = globalId;
+
         public Edge first;
         public Edge second;
+
+        public override int Id
+        {
+            get
+            {
+                return id;
+            }
+
+
+        }
 
         public override bool IsFulfilled
         {
@@ -35,6 +49,8 @@ namespace PolygonEditor.Model.Constraints
         {
             this.first = first;
             this.second = second;
+
+            globalId++;
         }
 
         public override void Enforce(Vertex pattern = null)

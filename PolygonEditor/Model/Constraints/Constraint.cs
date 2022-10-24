@@ -2,6 +2,7 @@
 {
     public abstract class Constraint
     {
+        public abstract int Id { get; }
         public abstract bool IsFulfilled { get; }
 
         /// <summary>
